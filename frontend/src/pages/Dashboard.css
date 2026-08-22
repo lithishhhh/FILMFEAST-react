@@ -1,0 +1,324 @@
+.dashboard {
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.82),
+            rgba(0, 0, 0, 0.98));
+       
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    color: white;
+    
+}
+
+
+/* NAVBAR */
+
+.dashboard-nav {
+    height: 75px;
+
+    padding: 0 5%;
+
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+
+    background: rgba(0,0,0,0.65);
+
+    backdrop-filter: blur(12px);
+}
+
+
+.dashboard-logo {
+    font-size: 27px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    color: #e50914;
+}
+
+.dashboard-logo span {
+    color:  white;
+}
+
+
+.signout-btn {
+    padding: 9px 20px;
+
+    border: 1px solid rgba(255,255,255,0.3);
+
+    border-radius: 5px;
+
+    background: transparent;
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+.signout-btn:hover {
+    background: #e50914;
+    border-color: #e50914;
+}
+
+
+/* CONTENT */
+
+.dashboard-content {
+    width: min(1100px, 90%);
+
+    margin: auto;
+
+    padding: 60px 0 80px;
+}
+
+
+/* WELCOME */
+
+.welcome-section {
+    text-align: center;
+
+    margin-bottom: 55px;
+}
+
+.small-heading {
+    color: #e50914;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 14px;
+}
+
+.welcome-section h2 {
+    font-size: clamp(32px, 5vw, 48px);
+
+    margin-bottom: 15px;
+}
+
+.description {
+    color: #999;
+
+    font-size: 16px;
+
+    line-height: 1.6;
+}
+
+
+/* SECTION */
+
+.preference-section {
+    margin-bottom: 45px;
+}
+
+.preference-section h3 {
+    font-size: 21px;
+
+    margin-bottom: 20px;
+}
+
+
+/* LANGUAGE CARDS */
+
+.language-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 15px;
+}
+
+
+.language-card {
+    height: 145px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    background: #151515;
+
+    transition: 0.3s ease;
+}
+
+.language-card img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: 0.4s ease;
+}
+
+.language-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    padding: 16px;
+
+    background: linear-gradient(
+        transparent 35%,
+        rgba(0,0,0,0.9)
+    );
+}
+
+.language-overlay span {
+    font-size: 17px;
+
+    font-weight: 600;
+}
+
+.language-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.language-card:hover img {
+    transform: scale(1.08);
+}
+
+
+/* GENRES */
+
+.genre-grid {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+}
+
+.genre-card {
+    padding: 13px 23px;
+
+    border-radius: 30px;
+
+    border: 1px solid #333;
+
+    background: rgba(20,20,20,0.85);
+
+    color: #ddd;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+.genre-card:hover {
+    background: #e50914;
+
+    border-color: #e50914;
+
+    color: white;
+
+    transform: translateY(-2px);
+}
+
+
+/* CONTINUE */
+
+.continue-btn {
+    display: block;
+
+    margin: 55px auto 0;
+
+    padding: 15px 55px;
+
+    border: none;
+
+    border-radius: 5px;
+
+    background: #e50914;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+.continue-btn:hover {
+    background: #f40612;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 25px rgba(229,9,20,0.25);
+}
+
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+    .language-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .dashboard-content {
+        padding-top: 45px;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .dashboard-logo {
+        font-size: 22px;
+    }
+
+    .signout-btn {
+        padding: 8px 14px;
+    }
+
+    .language-grid {
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 10px;
+    }
+
+    .language-card {
+        height: 120px;
+    }
+
+    .welcome-section h2 {
+        font-size: 31px;
+    }
+
+    .genre-card {
+        padding: 11px 17px;
+    }
+
+    .continue-btn {
+        width: 100%;
+    }
+}
