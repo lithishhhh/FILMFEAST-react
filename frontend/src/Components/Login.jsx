@@ -35,7 +35,7 @@ function Login() {
             );
 
             console.log("Backend response:", response.data);
-            
+
             if (response.data.success) {
                 navigate("/dashboard");
             }
@@ -46,6 +46,8 @@ function Login() {
         } catch (error) {
             if (error.response) {
                 setError(error.response.data.message);
+                setEmail("");
+                setPassword("");
             } else {
                 setError("Unable to connect to server");
             }
