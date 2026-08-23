@@ -35,11 +35,10 @@ function Login() {
             );
 
             console.log("Backend response:", response.data);
-
-            if (response.status === 200) {
-    console.log("LOGIN SUCCESS — NAVIGATING NOW");
-    navigate("/dashboard");
-}
+            
+            if (response.data.success) {
+                navigate("/dashboard");
+            }
             else {
                 setError(response.data.message);
             }
