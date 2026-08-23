@@ -17,35 +17,38 @@ function Login() {
 
         setError("");
 
-        
+
         if (!email || !password) {
             setError("Please enter email and password");
             return;
         }
 
-       
-    try {
-    const response = await axios.post(
-        `${process.env.REACT_APP_API_URL}/api/login`,
-        {
-            email,
-            password
+
+
+        try {
+            const response = await axios.post(
+                `${process.env.REACT_APP_API_URL}/api/login`,
+                {
+                    email,
+                    password
+                }
+            );
+
+            console.log("Backend response:", response.data);
+
+            if (response.data.success) {
+                navigate("/dashboard");
+            } else {
+                setError(response.data.message);
+            }
+
+        } catch (error) {
+            if (error.response) {
+                setError(error.response.data.message);
+            } else {
+                setError("Unable to connect to server");
+            }
         }
-    );
-
-    console.log("Backend response:", response.data);
-
-    if (response.status === 200) {
-        navigate("/dashboard");
-    }
-
-} catch (error) {
-    if (error.response) {
-        setError(error.response.data.message);
-    } else {
-        setError("Unable to connect to server");
-    }
-}
     }
 
     return (
