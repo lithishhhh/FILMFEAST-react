@@ -3,16 +3,8 @@ const cors = require("cors");
 
 const app = express();
 
-
-app.use(cors({
-    origin: "https://filmfeast-react-f48c-5tm9co0ik-lithishhhhs-projects.vercel.app",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type"]
-}));
-
+app.use(cors());
 app.use(express.json());
-
-
 
 const user = {
     email: "user@gmail.com",
@@ -20,23 +12,24 @@ const user = {
 };
 
 app.post("/api/login", (req, res) => {
+
     const { email, password } = req.body;
 
-    
-
     if (email === user.email && password === user.password) {
-        return res.status(200).json({
+        res.send({
             message: "Login successful",
             success: true
         });
+    } else {
+        res.send({
+            message: "Invalid email or password",
+            success: false
+        });
     }
-
-    return res.status(401).json({
-        message: "Invalid email or password",
-        success: false
-    });
 });
 
-app.listen(process.env.PORT || 5000, function() {
-    console.log("Server started...");
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+    console.log(`Server started on port ${PORT}`);
 });
