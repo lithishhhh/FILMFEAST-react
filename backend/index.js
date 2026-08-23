@@ -4,35 +4,27 @@ const cors = require("cors");
 const app = express();
 
 app.use(cors());
-
 app.use(express.json());
 
-
-
-app.get("/",(req,res) => {
-  res.send("FilmFeast backend in running");
-
+app.get("/", (req, res) => {
+    res.send("FilmFeast backend is running!");
 });
 
 app.post("/api/login", (req, res) => {
+    console.log("LOGIN REQUEST RECEIVED");
+    console.log(req.body);
 
     const { email, password } = req.body;
 
     if (email === "user@gmail.com" && password === "0011") {
-        return res.send({
-            message: "Login successful",
-            success: true
-        });
+        res.send("Login successful");
+    } else {
+        res.send("Invalid email or password");
     }
-
-    res.send({
-        message: "Invalid email or password",
-        success: false
-    });
 });
 
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-    console.log("Server started");
+    console.log("Server started on port " + PORT);
 });
