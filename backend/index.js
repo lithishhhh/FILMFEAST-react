@@ -4,7 +4,7 @@ const cors = require("cors");
 const app = express();
 
 app.use(cors({
-    origin: "https://filmfeast-react-f48c-5tm9co0ik-lithishhhhs-projects.vercel.app",
+    origin:true,
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type"]
 }));
@@ -15,6 +15,11 @@ const user = {
     email: "user@gmail.com",
     password: "0011"
 };
+
+app.get("/",(req,res) => {
+  res.send("FilmFeast backend in running");
+
+});
 
 app.post("/api/login", (req, res) => {
 
